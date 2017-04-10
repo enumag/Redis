@@ -294,7 +294,7 @@ class RedisExtension extends Nette\DI\CompilerExtension
 
 	protected static function fixClientConfig(array $config)
 	{
-		if ($config['host'][0] === '/') {
+		if (is_string($config['host']) && $config['host'][0] === '/') {
 			$config['port'] = NULL; // sockets have no ports
 
 		} elseif (!$config['port']) {
